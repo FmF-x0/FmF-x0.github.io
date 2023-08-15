@@ -1,11 +1,27 @@
 [
   
     {
+      "title"    : "Blogger (Parrot CTF)",
+      "description" : "",
+      "tags"     : "unix/linux, Parrot Ctf",
+      "url"      : "/ParrotCtf-Blogger/",
+      "date"     : "2023-08-14 05:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Brew Brothers (Parrot CTF)",
       "description" : "",
       "tags"     : "unix/linux, Parrot Ctf",
       "url"      : "/ParrotCtf-Brew_Brothers/",
       "date"     : "2023-06-03 05:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Parrotctf Blogger",
+      "description" : "",
+      "tags"     : "",
+      "url"      : "/ParrotCtf-Blogger/",
+      "date"     : "2023-06-03 00:00:00 +0000"
     } ,
   
     {
