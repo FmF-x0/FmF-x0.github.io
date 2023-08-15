@@ -17,14 +17,6 @@
     } ,
   
     {
-      "title"    : "Parrotctf Blogger",
-      "description" : "",
-      "tags"     : "",
-      "url"      : "/ParrotCtf-Blogger/",
-      "date"     : "2023-06-03 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "Bsides Panama CTF 2023",
       "description" : "",
       "tags"     : "unix/linux, Windows, CTF, Medium",
