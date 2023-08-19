@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Pet shop (Parrot CTF)",
+      "description" : "",
+      "tags"     : "unix/linux, Parrot Ctf",
+      "url"      : "/ParrotCtf-Pet_Shop/",
+      "date"     : "2023-08-19 05:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Blogger (Parrot CTF)",
       "description" : "",
       "tags"     : "unix/linux, Parrot Ctf",
