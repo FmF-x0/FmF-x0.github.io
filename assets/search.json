@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Santa&#39;s List (Parrot CTF)",
+      "description" : "",
+      "tags"     : "unix/linux, Parrot Ctf",
+      "url"      : "/ParrotCtf-Santas_List/",
+      "date"     : "2023-08-30 05:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Pet shop (Parrot CTF)",
       "description" : "",
       "tags"     : "unix/linux, Parrot Ctf",
