@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Ransom</title><!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Ransom" />
+<meta name="author" content="FmF" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/ransom.html" />
+<meta property="og:url" content="http://localhost:4000/ransom.html" />
+<meta property="og:site_name" content="FmF - Hacking blog 🩻" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-11-24T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Ransom" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/ransom.html"},"author":{"@type":"Person","name":"FmF"},"@type":"BlogPosting","url":"http://localhost:4000/ransom.html","headline":"Ransom","dateModified":"2022-11-24T00:00:00-06:00","datePublished":"2022-11-24T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="FmF - Hacking blog 🩻" /><link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head><body a="dark">
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">../</a><article>
+  <p class="post-meta">
+    <time datetime="2022-11-24 00:00:00 -0600">2022-11-24</time>
+  </p>
+  
+  <h1>Ransom</h1>
+
+  <p><img src="/assets/img/ransom/ransom.jpg" width="600" /></p>
+
+<h3 id="phases">Phases:</h3>
+
+<ul>
+  <li>Recognition.</li>
+  <li>Intrusion.</li>
+  <li>Privilege escalation.</li>
+</ul>
+
+<h1 id="recognition">Recognition:</h1>
+
+<p>We start the recognition by knowing the OS and if the vuln machine is online with the following command:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ping</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="mf">10.10</span><span class="o">.</span><span class="mf">10.10</span> 
+</code></pre></div></div>
+
+<p><img src="/assets/img/ransom/1.png" width="600" /></p>
+
+<p>With that command, we send an ICMP package and if the <em>TTL</em> is in a range of 64 is a Linux machine and if it is in a range of 128 is a Windows machine. In this case, we are against a <em>Linux</em> machine.</p>
+
+<p>The next step that we are going to perform is a scan with <strong>Nmap</strong> to search for open ports in the victim machine with the next command:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sudo</span> <span class="n">nmap</span> <span class="o">-</span><span class="nb">p</span><span class="o">-</span> <span class="o">-</span><span class="n">sS</span> <span class="o">--</span><span class="nb">open</span> <span class="o">--</span><span class="n">min</span><span class="o">-</span><span class="n">rate</span> <span class="mi">5000</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="no">Pn</span> <span class="mf">10.10</span><span class="o">.</span><span class="mf">11.153</span> <span class="o">-</span><span class="n">oG</span> <span class="n">allPorts</span>
+</code></pre></div></div>
+
+<ul>
+  <li>-p –&gt; This will search all the ports in the victim machine.</li>
+  <li>-sS –&gt; This will do a TCP-SYC scan that only makes half the connection of the three-way handshake with the target. (This will scan the target very fast).</li>
+  <li>–open –&gt; It will only report the open ports.</li>
+  <li>–min-rate 5000 –&gt; It will send 5000 packages per second.</li>
+  <li>-n –&gt; It won’t do a DNS scan.</li>
+  <li>-Pn –&gt; This won’t do an ARP host resolution scan.</li>
+  <li>-oG –&gt; This will save the scanned ports in a regex format to then use a script to get the ports more quickly and do a more intense scan.</li>
+</ul>
+
+<p>We extract the ports of the file <em>allPorts</em> with the following script. You must put it in your <em>.zshrc</em> or  <em>.bashrc</em> and install <em>xclip</em>. (The owner of this script is <em>S4vitar</em>.)</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">function</span> <span class="n">extractPorts</span><span class="p">(){</span>
+	<span class="n">ports</span><span class="o">=</span><span class="s2">"$(cat $1 | grep -oP '</span><span class="se">\d</span><span class="s2">{1,5}/open' | awk '{print $1}' FS='/' | xargs | tr ' ' ',')"</span>
+	<span class="n">ip_address</span><span class="o">=</span><span class="s2">"$(cat $1 | grep -oP '</span><span class="se">\d</span><span class="s2">{1,3}</span><span class="se">\.\d</span><span class="s2">{1,3}</span><span class="se">\.\d</span><span class="s2">{1,3}</span><span class="se">\.\d</span><span class="s2">{1,3}' | sort -u | head -n 1)"</span>
+	<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">[*] Extracting information...</span><span class="se">\n</span><span class="s2">"</span> <span class="o">&gt;</span> <span class="n">extractPorts</span><span class="p">.</span><span class="nf">tmp</span>
+	<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">[*] IP Address: $ip_address"</span>  <span class="o">&gt;&gt;</span> <span class="n">extractPorts</span><span class="p">.</span><span class="nf">tmp</span>
+	<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">[*] Open ports: $ports</span><span class="se">\n</span><span class="s2">"</span>  <span class="o">&gt;&gt;</span> <span class="n">extractPorts</span><span class="p">.</span><span class="nf">tmp</span>
+	<span class="n">echo</span> <span class="s2">"nmap -sCV -p$ports -oN targeted "</span> <span class="o">|</span> <span class="n">tr</span> <span class="o">-</span><span class="n">d</span> <span class="s1">'\n'</span> <span class="o">|</span> <span class="n">xclip</span> <span class="o">-</span><span class="n">sel</span> <span class="n">clip</span>
+	<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">"[*] Ports copied to clipboard</span><span class="se">\n</span><span class="s2">"</span>  <span class="o">&gt;&gt;</span> <span class="n">extractPorts</span><span class="p">.</span><span class="nf">tmp</span>
+	<span class="n">cat</span> <span class="n">extractPorts</span><span class="p">.</span><span class="nf">tmp</span><span class="p">;</span> <span class="n">rm</span> <span class="n">extractPorts</span><span class="p">.</span><span class="nf">tmp</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We do a <strong>ctrl + v</strong> to paste the following command and only need to put the IP address.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">sudo</span> <span class="n">nmap</span> <span class="o">-</span><span class="n">p80</span><span class="p">,</span><span class="mi">22</span> <span class="o">-</span><span class="n">sCV</span> <span class="mf">10.10</span><span class="o">.</span><span class="mf">11.153</span> <span class="o">-</span><span class="n">oN</span> <span class="no">Targeted</span> 
+</code></pre></div></div>
+
+<ul>
+  <li>-sCV –&gt; This will show the version of the services running in the target’s open ports. Also, it will show us some vulnerabilities that we could exploit if it finds some.</li>
+</ul>
+
+<p><img src="/assets/img/ransom/2.png" width="600" /></p>
+
+<p>This scan doesn’t give us much information. :(</p>
+
+<p>We see port 80 open, so we do the following to get more info:</p>
+
+<ul>
+  <li><strong>whatweb 10.10.11.153</strong></li>
+</ul>
+
+<p>This will show us the version of CMS and more information that could be useful for further steps. (Also, we could use the addon named Wappalizer in our web browser.) with this, we see the web redirecting to a <em>/login</em> page; viewing the page is asking for a password we don’t have.</p>
+
+<p><img src="/assets/img/ransom/3.png" width="600" /></p>
+
+<p>The web looks like this:</p>
+
+<p><img src="/assets/img/ransom/7.png" width="600" /></p>
+
+<p>We tried slqi, but no luck :(</p>
+
+<p>We tried <em>fuzzing</em> the web but nothing interesting.</p>
+
+<p>We open <strong>burpsuite</strong> to look at what is sending and if we can exploit some parameters.</p>
+
+<p>We see that the data we provide like the password, is being sent to a <em>/api/login</em>. If we change the request method to <em>POST</em> and send it, we get an error of <strong><em>method not allowed</em></strong>, and now we see that the <em>password field</em> is now on the lower part of the request.</p>
+
+<p><img src="/assets/img/ransom/4.png" width="600" /></p>
+
+<p>If we change the method again to <em>GET</em>, but with the password on the lower part of the request, we get a different error, but this is time indicating <strong>unprocessable content</strong>.</p>
+
+<p><img src="/assets/img/ransom/5.png" width="600" /></p>
+
+<p>In the response, we see that the content-type is using a <em>json format</em> so we put it like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+ <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"test"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>And also, we need to change the content-type to <strong>application/json</strong> in our request.</p>
+
+<p><img src="/assets/img/ransom/6.png" width="600" /></p>
+
+<p>And this time we get an error indicating that the password is incorrect, but we are going in a rigth way :)</p>
+
+<h2 id="intrusion">Intrusion:</h2>
+
+<p>Searching for ways to exploit the page, we get this article: <a href="https://www.invicti.com/blog/web-security/php-type-juggling-vulnerabilities/" title="Type juggling attack">Link</a> it tells us that we can bypass the password input, providing a boolean.</p>
+
+<p>So we pass a bolean in our json format password input.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+ <span class="s2">"password"</span><span class="p">:</span> <span class="kp">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This way we get access to the page :)</p>
+
+<p>We see the user flag and a zip file.</p>
+
+<p>We download the zip file and use <strong>unzip</strong> to try to decompress it but we need to provide a password and for now we don’t have it, so I used <strong>zip2john</strong> and <em>fcrackzip</em> to try to crack it but none of this work.</p>
+
+<p>We start to search for more information about the zip, we can use <strong>7z l uploaded-file-3422.zip</strong> to see the content of the file, the file contents a id_rsa that we could use to connect to the victim machine, we use <strong>7z l uploaded-file-3422.zip -slt</strong> to get even more information.</p>
+
+<p><img src="/assets/img/ransom/8.png" width="600" /></p>
+
+<p>This will list more attributes of the zip files and we see that the method is <strong>ZipCrypto Deflate</strong> searching for this method and how to crack a zip file we see an interesting post: <a href="https://medium.com/@whickey000/how-i-cracked-conti-ransomware-groups-leaked-source-code-zip-file-e15d54663a8" title="How I Cracked CONTI Ransomware Group’s Leaked Source Code ZIP File">Link</a></p>
+
+<p>This attack can be used to crack the zip file, but we need a similar/same file that is in the encrypted zip and also that we have the content without encryption, looking at the previous image, we see a <strong><em>.bash_logout</em></strong> file and searching in our machine we find a file named like it, and maybe it could be the same, to make sure we can compare the size, we can do this with the command <strong>wc -c bash_logout</strong> and we see that the size is the same as on the previous image that is <strong>220</strong> same as the encrypted file:</p>
+
+<p><img src="/assets/img/ransom/9.png" width="600" /></p>
+
+<p>Link of the tool: <a href="https://github.com/kimci86/bkcrack" title="bkcrack tool">Link</a></p>
+
+<p>So we can do the following to perform the attack:</p>
+
+<p>First, we clone the tool with the command <strong>git clone https://github.com/kimci86/bkcrack</strong> and install it, then we go where the executable is, and there we are going to copy the <strong>encrypted zip</strong> and the <strong>.bash_logout</strong> that we have in plain text, to then do the this:</p>
+
+<p>We create a zip with the <strong>.bash_logout</strong> that we have in plain text:</p>
+
+<p><strong>zip plain.zip .bash_logout</strong></p>
+
+<p>Then we do this:</p>
+
+<p><img src="/assets/img/ransom/10.png" width="600" /></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bkcrack</span> <span class="o">-</span><span class="no">C</span> <span class="n">uploaded</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="mi">3422</span><span class="p">.</span><span class="nf">zip</span> <span class="o">-</span><span class="n">c</span> <span class="s2">".bash_logout"</span> <span class="o">-</span><span class="no">P</span> <span class="n">plain</span><span class="p">.</span><span class="nf">zip</span> <span class="o">-</span><span class="nb">p</span> <span class="s2">"bash_logout"</span>
+</code></pre></div></div>
+
+<p>We pass the <em>uploaded-file-3422.zip</em> and also indicate the file’s name in the encrypted zip file that we have the copy in plain text.</p>
+
+<p>Then we pass the zip file we created with the <strong>bash_logout</strong> that we have in plain text. (It could be other names, it doesn’t matter what matter is the content that needs to be the same or very identical)</p>
+
+<p>Then we need to wait until it gives us the keys that we could use to get the content of the encrypted file.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bkcrack</span> <span class="o">-</span><span class="no">C</span> <span class="vg">$encrypted_zip_file</span> <span class="o">-</span><span class="n">k</span> <span class="vg">$key</span> <span class="vg">$key</span> <span class="vg">$key</span> <span class="o">-</span><span class="no">U</span> <span class="n">new</span><span class="p">.</span><span class="nf">zip</span> <span class="n">password</span>
+</code></pre></div></div>
+
+<p><img src="/assets/img/ransom/11.png" width="600" /></p>
+
+<p>We created a new zip file with a password that is <em>“password”</em> and will have the duplicated files as <em>uploaded-file-3422.zip</em> thanks to the three keys we get.</p>
+
+<p>And then, we decrypt it with the password we put and get the content.</p>
+
+<p>We get the <em>id_rsa</em>, but we need a user. To get the user see the <em>id_rsa.pub</em>, and the user is <em>htb</em>.</p>
+
+<p>So now we put the permissions to the id_rsa <em>chmod 600 id_rsa</em> and connect to the machine <strong>ssh -i id_rsa htb@101.01.01.101</strong></p>
+
+<h2 id="privelege-escalation">Privelege escalation</h2>
+
+<p>In the web page we see that there is a login requesting a password and maybe that password could be reuse for the root user, so we start to search, but in the standard path “/var/www/html” there is nothing.</p>
+
+<p>When we used <strong>whatweb</strong>, we saw that the page is using apache and knowing that we could search this path <strong>/etc/apache2/default/sites-enabled/000-default.conf</strong> to get information, and in fact, we see the root page is in the route <em>/srv/prod/public</em>.</p>
+
+<p><img src="/assets/img/ransom/12.png" width="600" /></p>
+
+<p>We go to the path and start looking for where password could be, but there are too many files to explore, to decrease the scope do this:</p>
+
+<p>You need to be in this path: <em>/srv/prod/</em></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grep</span> <span class="o">-</span><span class="n">r</span> <span class="n">login</span>
+</code></pre></div></div>
+
+<p><img src="/assets/img/ransom/13.png" width="600" /></p>
+
+<p>And we find a login string that looks interesting “<strong>routes/api.php</strong>”.</p>
+
+<p>Viewing the <em>api.php</em> we see something interesting “<strong>AuthController::class</strong>”.</p>
+
+<p><img src="/assets/img/ransom/14.png" width="600" /></p>
+
+<p>Viewing the file “<strong>app/Http/Controllers/AuthController.php</strong>” we get the password.</p>
+
+<p><img src="/assets/img/ransom/15.png" width="600" /></p>
+
+<p>We test it with the root user and that’s his password.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">su</span> <span class="n">root</span>
+</code></pre></div></div>
+
+<p>And now we are root :)</p>
+
+</article>
+      </div>
+    </main>
+  </body>
+</html>
