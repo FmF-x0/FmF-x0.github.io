@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Pwnedcr 6</title><!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Pwnedcr 6" />
+<meta name="author" content="FmF" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/pwnedcr-6.html" />
+<meta property="og:url" content="http://localhost:4000/pwnedcr-6.html" />
+<meta property="og:site_name" content="FmF - Hacking blog 🩻" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-11-15T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Pwnedcr 6" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pwnedcr-6.html"},"author":{"@type":"Person","name":"FmF"},"@type":"BlogPosting","url":"http://localhost:4000/pwnedcr-6.html","headline":"Pwnedcr 6","dateModified":"2023-11-15T00:00:00-06:00","datePublished":"2023-11-15T00:00:00-06:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="FmF - Hacking blog 🩻" /><link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head><body a="dark">
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">../</a><article>
+  <p class="post-meta">
+    <time datetime="2023-11-15 00:00:00 -0600">2023-11-15</time>
+  </p>
+  
+  <h1>Pwnedcr 6</h1>
+
+  <p><img src="/assets/img/pwnedcr6/1.png" width="800" /></p>
+
+<h1 id="retos">Retos:</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">crypto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><a href="#1-800-00-hack">800-00-hack</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#2-too-easy">too easy</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#3-dcod-hit">dcod’hit!</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">OSINT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><a href="#1-in-flames">In flames!!</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#2-ob">OB</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#3-they-seem-but-they-are-not">They seem but they are not!</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Reversing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><a href="#1-j-guy">J-GUY</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#2-idk">IDK</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#3-cr4zzy-byt3s">Cr4zzy Byt3s</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Stego</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><a href="#1-rocinante">Rocinante!!</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#2-frk-of-pil">F*rk of PIL</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#3-welcome-sloth">welcome Sloth!!</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#4-rollon">RollON</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#5-b3tch">B3tch</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#6-relajasonic">Relajasonic</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#7-hack--eat-pinto">Hack &amp; Eat Pinto!</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Web</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><a href="#1-ellingson-mineral-chapter-1">Ellingson Mineral Chapter 1</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#2-ellingson-mineral-chapter-2">Ellingson Mineral Chapter 2</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="#3-ellingson-mineral-chapter-3">Ellingson Mineral Chapter 3</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="/assets/img/pwnedcr6/vaca-loca.gif">Ellingson Mineral Chapter 4 (La vaca loca)</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="crypto">Crypto:</h1>
+
+<h3 id="1-800-00-hack">1. 800-00-hack:</h3>
+
+<blockquote>
+  <p>Descripción: We can hacker with our ears.</p>
+</blockquote>
+
+<p>Nos proporcionan <a href="/assets/img/pwnedcr6/800-PWND.wav">este archivo</a> de audio en el cual se escuchan los tonos que se generan al marcar un número de teléfono, lo que se conoce como <strong>Dual-tone multi-frequency signaling</strong>. Buscando un poco, podemos dar con <a href="https://dtmf.netlify.app/">este recurso</a>, el cual nos permite decodificar el archivo de audio a números.</p>
+
+<p>El resultado es el siguiente:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4433277708666044222255
+</code></pre></div></div>
+
+<p>Una vez que tenemos estos números, podemos utilizar este <a href="https://www.dcode.fr/multitap-abc-cipher">otro recurso</a> el cual nos permitirá obtener un resultado en texto claro.</p>
+
+<p>Nos da esta cadena en texto claro:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HEAR TO/TMN HACK
+</code></pre></div></div>
+
+<p>Por lo cual podemos llegar a la conclusion de que la flag es la siguiente:</p>
+
+<blockquote>
+  <p>PWND{hear_to_hack}</p>
+</blockquote>
+
+<h3 id="2-too-easy">2. too easy:</h3>
+
+<blockquote>
+  <p>Descripción: Some cipher methods require two elements, has anyone found my keys?</p>
+</blockquote>
+
+<p>Nos proporcionan un archivo que al parecer fue en cifrado. El contenido es el siguiente:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tvkjxtui, at uvojkkuis wg cwh lkjbtfcj ltigelt wg ci uhtkiaxbr lt lwj kdgviwaxu. dicmgebt tekcpekqish, cgztgfv g sbxzézixvv ltlezngtpuw tlvv utgurrt. ¡uwvvp lwvzix!!!rnvs{e00m_rzdnpu_&amp;_l3rkagb}
+</code></pre></div></div>
+
+<p>Para desafíos de este estilo, tu mejor amigo es usar <a href="https://gchq.github.io/CyberChef/">CyberChef</a>. Por experiencia supe que este tipo de cifrado era <a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">Vigenère</a>. Una forma de determinar el tipo de cifrado es utilizando <a href="https://www.boxentriq.com/code-breaking/cipher-identifier">esta pagina</a>.</p>
+
+<p>Este cifrado nos pide una clave para poder ver el texto, podemos probar con el nombre del archivo de donde proviene este texto, que es: <code class="language-plaintext highlighter-rouge">cript</code>, y en efecto podemos ver el siguiente resultado.</p>
+
+<p><img src="/assets/img/pwnedcr6/2.png" width="600" /></p>
+
+<blockquote>
+  <p>pwnd{l00k_around_&amp;_d3crypt}</p>
+</blockquote>
+
+<h3 id="3-dcod-hit">3. dcod hit!:</h3>
+
+<blockquote>
+  <p>Descripción: I thought I understood encoding but everything looks backwards…</p>
+</blockquote>
+
+<p>Nos un archivo que contiene lo siguiente:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a056e646a006a0d3c26455e24375d2e4b3755295a37392d4e2730465a26552153342c225a362c2b443748225c2354506a0d483735494d23392c4e373d255d36394d2c244d4a523735492a3739254936354c23375830533629203a3754225537252050355928463635424d3331373a0d423654285a3325394e362554503451445d243d213a332d3f28374445503551495d2735223c34354545363457543659295c3755263e343c425c2735234a0d4b3731254437593c25345941533629253a3435554d2630545a3545215e26254f2d363d295c3635434c27414c4d245c315d3429455136454a2835354a5a0d4336595054345d3553352c325c3325325236494c2c274d2e4b3359395a375062553735314d3441494c37253a3c3545473837354051375d2d4c33493a5a0d42345d3e423349393c3341325337392a2c34393a5e2624205d343954323730345c26492c48344d543c37252e433659535e363d5958344d265e3434475a0d4c3639572e3449472e2730445835392a4b355d324c375d2554363540513459525b3755235e3539472c27252f4b2455595d243d4c2e34415b2833452c2a0d4c3349394e3724345436552b463749403b3335314436455b21342d5a42345d223a3455455937593b2c2645525d2725313c2750365033554148373d3b4a026567696e60263434302d2
+</code></pre></div></div>
+
+<p>Como mencioné anteriormente, tu mejor aliado es <a href="https://gchq.github.io/CyberChef/">CyberChef</a>. En la descripción, nos dan una pista ‘<strong>backwards</strong>’, tal vez el texto esta invertido entonces invirtiéndolo otra vez talvez consigamos algo.</p>
+
+<p><img src="/assets/img/pwnedcr6/3.png" width="600" /></p>
+
+<p>El símbolo de la varita mágica indica que CyberChef ha encontrado una coincidencia con un cifrado.</p>
+
+<p><img src="/assets/img/pwnedcr6/4.png" width="600" /></p>
+
+<p>CyberChef reconoció que era un texto en hexadecimal, y podemos probar invirtiéndolo nuevamente. Ahora observamos un texto más claro en el cual podemos trabajar, Pero parece estar mal acomodado, así que intentemos acomodarlo de esta manera.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>begin 644 -
+M&lt;C9I&gt;'4T4V%K6GI0;35A4FU+1$]J2T-2:TEU9W9+,FUR-'51,W0V0SEA87=K
+M&lt;6Y'&gt;DI'.7@T85)J;U=B&lt;W-U46EP1TYR;W%S&gt;5I','%O+TUY-4M,&gt;DQ+8C%,
+M2T=N2C99&lt;C1R37)*&lt;49Z.&amp;$P=4Y4270T,F)L8D]4&lt;'%N3VYS&gt;6]Y8D-V&gt;4DW
+M3VYP4T=U3%&lt;R&lt;#5R2FI,,G-N;S9Y:W`R575A=DAI&lt;'5:&lt;EE787EP1W-M&lt;C9Z
+M;7!E4W9,5TIQ3&amp;)5:4UE-6PT:E%Q.&amp;E/=6-Y&lt;6EC,GAL-T&lt;Q=$IU1FE*85EZ
+M2V$X:#5I&gt;&amp;UT0TAT-4-1:#=/8GDU0UAY-7%2&lt;4EE56TW4V)Y&lt;W%6&gt;4LR,7%C
+M87EI-3)L&gt;7-U=6I-,DMZ27E):7)E96E,3W8P3&amp;)0:W$R5'%P0U)H66EB=317
+=,FU.4W-N;W%Y:7)M.7@V*V%Q3$,R:&amp;,K4G(R,ST`
+`
+end
+</code></pre></div></div>
+
+<p>¿Qué es esto? Bueno si buscamos en Internet ‘<strong>begin 644 -</strong>’, encontraremos un tipo de codificación llamado <a href="https://en.wikipedia.org/wiki/Uuencoding">Uuencoding</a>.</p>
+
+<p>Para decodificarlo podemos hacer uso de <a href="https://www.dcode.fr/uu-encoding">esto</a>, lo colocamos sin las lineas de <code class="language-plaintext highlighter-rouge">begin 644 -</code> y <code class="language-plaintext highlighter-rouge">end</code> y presionamos <code class="language-plaintext highlighter-rouge">decrypt</code> y nos da el siguiente resultado:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>r6ixu4SakZzPm5aRmKDOjKCRkIugvK2mr4uQ3t6C9aawkqnGzJG9x4aRjoWbssuQipGNroqsyZG0qo/My5KLzLKb1LKGnJ6Yr4rMrJqFz8a0uNTIt42blbOTpqnOnsyoybCvyI7OnpSGuLW2p5rJjL2sno6ykp2UuavHipuZrYWaypGsmr6zmpeSvLWJqLbUiMe5l4jQq8iOucyqic2xl7G1tJuFiJaYzKa8h5ixmtCHt5CQh7Oby5CXy5qRqIeUm7SbysqVyK21qcayi52lysuujM2KzIyIireeiLOv0LbPkq2TqpCRhYibu4W2mNSsnoqyirm9x6+aqLC2hc+Rr23=
+</code></pre></div></div>
+
+<p>Esto tiene mucha pinta a una cadena en base64 asi que utilizemos CyberChef otra vez.</p>
+
+<p><img src="/assets/img/pwnedcr6/5.png" width="600" /></p>
+
+<p>Parece que algo nos falta algo…</p>
+
+<p>Intentando varias formas damos en el clavo con <code class="language-plaintext highlighter-rouge">XOR Brute Force</code> ya que al final podemos ver la flag.</p>
+
+<p><img src="/assets/img/pwnedcr6/6.png" width="600" /></p>
+
+<blockquote>
+  <p>PWND{enc0ding_1s_not_CRYPto!!}</p>
+</blockquote>
+
+<h1 id="osint">OSINT:</h1>
+
+<h3 id="1-in-flames">1. In flames!!:</h3>
+
+<blockquote>
+  <p>Descripción: Hidden in discord the first search is born. &lt;3</p>
+</blockquote>
+
+<p>Este reto es muy simple, lo que habia que hacer era encontrar la siguiente foto en el chat de discord, la cual tiene una cadena en base64.</p>
+
+<p><img src="/assets/img/pwnedcr6/7.png" width="600" /></p>
+
+<blockquote>
+  <p>e2Nvbl9hbW9yfQ==</p>
+</blockquote>
+
+<p>La cual decodeada te da la flag.</p>
+
+<blockquote>
+  <p>PWND{con_amor}</p>
+</blockquote>
+
+<h3 id="2-ob">2. OB:</h3>
+
+<p><img src="/assets/img/pwnedcr6/ob.gif" width="300" /></p>
+
+<blockquote>
+  <p>Descripción: The Temporal Loom is the heart of the Drive. It’s where raw time is refined into physical timeline. You can find it on the pwnedcr.com website!!</p>
+</blockquote>
+
+<p>Revisando el codigo fuente de la pagina <a href="www.pwnedcr.com">pwnedcr</a> podemos encontrar algo muy interesante en el <a href="https://www.pwnedcr.com/js/main.js">main.js</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jmmm Smells like O.S.!.N.T, https://drive.google.com/drive/folders/1ZAcQsU4506OBabNBCvuUdgUB19bPxHDm
+</code></pre></div></div>
+
+<p>Revisando el folder de Google Drive, podemos encontrar muchos subdirectorios e imágenes… si tienen la <a href="https://sw.kovidgoyal.net/kitty/">terminal Kitty</a>, hay un comando bastante útil para visualizar imágenes directamente desde la consola <code class="language-plaintext highlighter-rouge">kitty +kitten icat *</code>. Con esto, podemos ver todas las imágenes de manera recursiva sin tener que revisar cada directorio una por una… (Debes ejecutar este comando en <code class="language-plaintext highlighter-rouge">┌──(user㉿kaliBit)-[/]</code> para que busque de forma recursiva las imagenes).</p>
+
+<p><img src="/assets/img/pwnedcr6/8.png" width="300" /></p>
+
+<p>Podemos encontrar imágenes con nombres como <code class="language-plaintext highlighter-rouge">Matrix0001.png</code> que contienen una cadena en base64. (Podemos deducir que los nombre de las imagenes tienen numeros en formato binario pero estan desordenados igual…)</p>
+
+<p>Para reconstruir el texto yo lo hice por prueba y error, de esta manera y con CyberChef llegamos a el siguiente resultado:</p>
+
+<p><img src="/assets/img/pwnedcr6/9.png" width="600" /></p>
+
+<blockquote>
+  <p>PWND{Rebuild_in_the_timeline}</p>
+</blockquote>
+
+<h3 id="3-they-seem-but-they-are-not">3. They seem but they are not!:</h3>
+
+<blockquote>
+  <p>Descripción: In 2008, Canadian Chris Neil was convicted… Wait, wait, he’s not the same, this character is super friendly and a good guy. We just immerse it in the matrix!
+Ask him about the flag!! Remember format PWND{}</p>
+</blockquote>
+
+<p>Nos dan la siguiente imagen.</p>
+
+<p><img src="/assets/img/pwnedcr6/delriwS.png" width="300" /></p>
+
+<p>Al parecer la imagen tiene un efecto <strong>swirl</strong>, la podemos llevar a su estado normal con la <a href="https://www8.lunapic.com/editor/?action=swirl">esta pagina</a></p>
+
+<p><img src="/assets/img/pwnedcr6/10.png" width="300" /></p>
+
+<p>XD, podemos ver que se trata de <strong>Ragab0t</strong> y al preguntarle por la flag en Discord nos da la flag.</p>
+
+<blockquote>
+  <p>PWND{_imperial_}</p>
+</blockquote>
+
+<h1 id="reversing">Reversing:</h1>
+
+<h3 id="1-j-guy">1. J-GUY:</h3>
+
+<blockquote>
+  <p>Descripción: Hello, the first steps of reversing.!!!</p>
+</blockquote>
+
+<p>Nos proporcionan <a href="/assets/img/pwnedcr6/Pwnedcr_app.jar">este archivo</a> <code class="language-plaintext highlighter-rouge">.jar</code>, una forma de reconstruir el contenido de este tipo de archivos es utilizando <a href="https://java-decompiler.github.io/">JD-GUI</a>.</p>
+
+<p><img src="/assets/img/pwnedcr6/11.png" width="600" /></p>
+
+<p>Podemos observar que esta esperando una cadena que sea igual a <code class="language-plaintext highlighter-rouge">FrozenFox</code> para retornar esta cadena en base64.</p>
+
+<blockquote>
+  <p>RGVjb21waWxlcg==</p>
+</blockquote>
+
+<p>Al decodearla podemos ver la flag:</p>
+
+<p><img src="/assets/img/pwnedcr6/12.png" width="600" /></p>
+
+<blockquote>
+  <p>PWND{Decompiler}</p>
+</blockquote>
+
+<h3 id="2-idk">2. IDK:</h3>
+
+<blockquote>
+  <p>Descripción: Someone on the team wrote it. We still don’t know what it is. We only have an internal portion of it.
+mensaje_ofuscado = bytes([caracter ^ 0x5A for caracter in mensaje_codificado])</p>
+</blockquote>
+
+<p>Se nos proporciona <a href="/assets/img/pwnedcr6/pwnedcr.bin">este archivo</a>. Al observar la pista <code class="language-plaintext highlighter-rouge">bytes([caracter ^ 0x5A for caracter in mensaje_codificado])</code>, podemos notar que el mensaje ha sido sometido a una operación XOR con la clave <code class="language-plaintext highlighter-rouge">0x5A</code>. Para devolverlo a su forma original, podemos utilizar CyberChef.</p>
+
+<p>Cargamos el archivo y aplicamos XOR con la key <code class="language-plaintext highlighter-rouge">0x5A</code> y podemos ver la flag:</p>
+
+<p><img src="/assets/img/pwnedcr6/13.png" width="600" /></p>
+
+<blockquote>
+  <p>PWND{rev3rs1ng_easy}</p>
+</blockquote>
+
+<h3 id="3-cr4zzy-byt3s">3. Cr4zzy Byt3s:</h3>
+
+<blockquote>
+  <p>Descripción: Our cybernetic forth has been under siege by a horrendous monster that feeds on innocent bytes. Help us discover the key to destroy it!!</p>
+</blockquote>
+
+<p>Nos proporcionan <a href="/assets/img/pwnedcr6/chal">este archivo ejecutable</a>.</p>
+
+<p>Para decompilar el ejecutable pueden utilizar <a href="https://ghidra-sre.org/">Ghidra</a>, para asi tener una idea de las caracteristicas y las acciones que realiza dicho archivo.</p>
+
+<p><img src="/assets/img/pwnedcr6/14.png" width="600" /></p>
+
+<p>Nos dirigimos a <code class="language-plaintext highlighter-rouge">functions</code> –&gt; <code class="language-plaintext highlighter-rouge">main</code>, esto para poder decompilar/ver el entry point del ejecutable. El cual es el siguiente:</p>
+
+<p><img src="/assets/img/pwnedcr6/15.png" width="600" /></p>
+
+<p>Lo que podemos notar es que está comparando caracteres en hexadecimal para continuar con la ejecución del programa.</p>
+
+<p>Para pasar caracteres en hexadecimal como argumento podemos hacer lo siguiente:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>printf '\x11\x1c\v\x16@\x1e\x11[(e0\x18\x056CPg0\\\x0e(\x05+}\x02\x03\x03s\x12A' | ./chal | tr -d 'Nom nom! Gimme more bytes:'; echo
+</code></pre></div></div>
+
+<p><img src="/assets/img/pwnedcr6/16.png" width="800" /></p>
+
+<p>También podemos utilizar un script en Python:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pwn import *
+
+p = process("./chal")
+p.send(b'\x11\x1c\v\x16@\x1e\x11[(e0\x18\x056CPg0\\\x0e(\x05+}\x02\x03\x03s\x12A')
+
+print(p.readall().decode('utf-8', errors='ignore'))
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>PWND{numb3rs_are_Danger0us_!!}</p>
+</blockquote>
+
+<p>Si encuentras un error como este al ejecutar el archivo:</p>
+
+<p><img src="/assets/img/pwnedcr6/17.png" width="800" /></p>
+
+<p>Puedes evitarlo al usar un contenedor con Docker:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo docker pull ubuntu
+sudo docker run -it ubuntu bash
+</code></pre></div></div>
+
+<p>Dentro del contenedor ejecuta:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt update
+apt install wget python3 pip
+pip3 install pwntools (Por si quieres utilizar el script de python)
+</code></pre></div></div>
+
+<p>Puedes subir el archivo de la siguiente manera:</p>
+
+<p><img src="/assets/img/pwnedcr6/18.png" width="700" /></p>
+
+<h1 id="stego">Stego:</h1>
+
+<h3 id="1-rocinante">1. Rocinante!!</h3>
+
+<blockquote>
+  <p>Descripción: El mundo de las letras es muy interesante.</p>
+</blockquote>
+
+<p>Nos dan <a href="/assets/img/pwnedcr6/Sancho.txt">este archivo</a> que parece un archivo de texto común pero si le hacemos un <code class="language-plaintext highlighter-rouge">cat</code> podemos ver que hay tabs y espacios al final del archivo…</p>
+
+<p><img src="/assets/img/pwnedcr6/19.png" width="700" /></p>
+
+<p>Investigando un poco nos podemos dar cuenta que esta utilizando <code class="language-plaintext highlighter-rouge">whitespace steganography</code>, una herramienta para poder ver el mensaje original es <a href="https://www.kali.org/tools/stegsnow/">Stegsnow</a>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">stegsnow -C Sancho.txt</code> –&gt; Con este simple comando podemos ver la flag.</p>
+
+<blockquote>
+  <p>PWND{Tiquicia}</p>
+</blockquote>
+
+<h3 id="2-frk-of-pil">2. F*rk of PIL</h3>
+
+<p><img src="/assets/img/pwnedcr6/creepy.png" width="400" /></p>
+
+<blockquote>
+  <p>Descripción: We started with something basic to hide my tracks.</p>
+</blockquote>
+
+<p>Nos proporcionan <a href="/assets/img/pwnedcr6/creepy.png">este archivo</a>, para resolver este reto podemos hacer uso de <code class="language-plaintext highlighter-rouge">stegolsb</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">stegolsb steglsb -r -i creepy.png -n 2 -o secret_output</code> –&gt; Comando para descubrir información a por medio del <code class="language-plaintext highlighter-rouge">least significant bit</code>.</p>
+
+<p><img src="/assets/img/pwnedcr6/20.png" width="700" /></p>
+
+<blockquote>
+  <p>PWND{Eas1_peasy_dud3}</p>
+</blockquote>
+
+<h3 id="3-welcome-sloth">3. welcome Sloth!!</h3>
+
+<p><img src="/assets/img/pwnedcr6/pwnedcr1.jpeg" width="200" /></p>
+
+<blockquote>
+  <p>Descripción: La tenacidad del perezoso es sorprendente, lento pero muy decidido, lo intenta mil veces si es necesario pero no se rinde fácilmente</p>
+</blockquote>
+
+<p>Nos proporcionan <a href="/assets/img/pwnedcr6/pwnedcr1.jpeg">este archivo</a>, podemos resolver este reto con la herramienta <a href="https://github.com/RickdeJager/stegseek">stegseek</a>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">stegseek pwnedcr1.jpeg /usr/share/wordlists/rockyou.txt</code> –&gt; Con este comando podemos hacer bruteforcing para extraer los datos ocultos.</p>
+
+<p><img src="/assets/img/pwnedcr6/21.png" width="700" /></p>
+
+<p>Este es el contenido:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>50 57 4e 44 7b 48 61 79 74 61 6c 65 6e 74 6f 65 6e 43 52 7d
+</code></pre></div></div>
+
+<p>Utilizamos CyberChef con la receta <code class="language-plaintext highlighter-rouge">From HEX</code> y vemos la flag:</p>
+
+<blockquote>
+  <p>PWND{HaytalentoenCR}</p>
+</blockquote>
+
+<h3 id="4-rollon">4. RollON</h3>
+
+<blockquote>
+  <p>Descripción: This mix is based on meditation and energy gathering for BitBl4ck, it doesn’t get him out of his head.</p>
+</blockquote>
+
+<p>Nos dan <a href="/assets/img/pwnedcr6/arab_mix_2030.wav">este archivo</a>, podemos utilizar la misma herramienta de antes <code class="language-plaintext highlighter-rouge">stegolsb</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stegolsb wavsteg -r -i arab_mix_2030.wav -n 2 -o extracted_flag.txt -b 32
+</code></pre></div></div>
+
+<p>De esta manera podemos ver la flag:</p>
+
+<p><img src="/assets/img/pwnedcr6/22.png" width="700" /></p>
+
+<blockquote>
+  <p>PWND{r3cuerd0_la_1er4_ch4mb4}</p>
+</blockquote>
+
+<h3 id="5-b3tch">5. B3tch</h3>
+
+<p><img src="/assets/img/pwnedcr6/casaCR.png" width="400" /></p>
+
+<blockquote>
+  <p>Descripción: How nice it would be to have a house on the beach</p>
+</blockquote>
+
+<p>Nos dan <a href="/assets/img/pwnedcr6/casaCR.png">este archivo</a>, vamos a ver los metadatos…</p>
+
+<p><img src="/assets/img/pwnedcr6/23.png" width="400" /></p>
+
+<p>Vemos algo interesante en <code class="language-plaintext highlighter-rouge">image description</code> que es <code class="language-plaintext highlighter-rouge">online R7-G0-B7</code>, investigando un poco podemos toparnos con <a href="https://stegonline.georgeom.net/extract">esta pagina</a> en la cual podemos subir la imagen.</p>
+
+<p>Una vez subida la imagen presionamos <code class="language-plaintext highlighter-rouge">Extract Files/Data</code></p>
+
+<p><img src="/assets/img/pwnedcr6/24.png" width="400" /></p>
+
+<p>Una vez aqui ponemos los valores que vimos en <code class="language-plaintext highlighter-rouge">image description</code>…</p>
+
+<p><img src="/assets/img/pwnedcr6/25.png" width="400" /></p>
+
+<p>Precionamos <code class="language-plaintext highlighter-rouge">Go</code> y podemos ver la flag.</p>
+
+<p><img src="/assets/img/pwnedcr6/26.png" width="400" /></p>
+
+<blockquote>
+  <p>PWND{CTF}</p>
+</blockquote>
+
+<h3 id="6-relajasonic">6. Relajasonic</h3>
+
+<blockquote>
+  <p>Descripción: Los sonidos del bosque son relajantes, para disfrutarlos hay que estar bien atento</p>
+</blockquote>
+
+<p>Nos dan <a href="/assets/img/pwnedcr6/AbreteSesamo.7z">este archivo</a>, el cual esta comprimido y con contraseña.</p>
+
+<p>Vamos a intentar con la contraseña <code class="language-plaintext highlighter-rouge">AbreteSesamo</code> ya que es el nombre del archivo…</p>
+
+<p><img src="/assets/img/pwnedcr6/27.png" width="700" /></p>
+
+<p>LOL sirvio, el archivo comprimido contiene un archivo de audio, vamos a intentar ver el <code class="language-plaintext highlighter-rouge">espectrograma</code> con <code class="language-plaintext highlighter-rouge">Audacity</code>, para instalar Audacity pueden poner el siguiente comando <code class="language-plaintext highlighter-rouge">sudo apt install audacity</code>.</p>
+
+<p>Nos dirigimos a <code class="language-plaintext highlighter-rouge">File</code> para cargar el archivo.</p>
+
+<p><img src="/assets/img/pwnedcr6/28.png" width="700" /></p>
+
+<p>Presionamos el nombre del archivo y despues <code class="language-plaintext highlighter-rouge">Spectrogram</code>.</p>
+
+<p><img src="/assets/img/pwnedcr6/29.png" width="600" /></p>
+
+<p>Con esto podemos ver la flag.</p>
+
+<p><img src="/assets/img/pwnedcr6/30.png" width="600" /></p>
+
+<blockquote>
+  <p>PWND{Si_se_puede}</p>
+</blockquote>
+
+<h3 id="7-hack--eat-pinto">7. Hack &amp; Eat Pinto!</h3>
+
+<p><img src="/assets/img/pwnedcr6/chal.png" width="400" /></p>
+
+<blockquote>
+  <p>Descripción: All this challenge solving and thinking got me hungry. I just want to solve this one so I can eat!</p>
+</blockquote>
+
+<p>Nos dan <a href="/assets/img/pwnedcr6/chal.png">este archivo</a>, para resolver este reto vamos a usar <a href="https://github.com/zardus/ctf-tools/blob/master/stegsolve/install">stegsolve</a>.</p>
+
+<p>Cargamos la imagen y vamos investigando los diferentes efectos… en el <code class="language-plaintext highlighter-rouge">Red plane 0</code> podemos ver la flag.</p>
+
+<p><img src="/assets/img/pwnedcr6/31.png" width="400" /></p>
+
+<blockquote>
+  <p>PWND{1_see_WITH_my_lIttI3_eye}</p>
+</blockquote>
+
+<h1 id="web">Web</h1>
+
+<h3 id="1-ellingson-mineral-chapter-1">1. Ellingson Mineral Chapter 1</h3>
+
+<blockquote>
+  <p>Descripción: Iniciando en pentest web? Lo basico es los recursos minerales.
+http://34.214.201.218/</p>
+</blockquote>
+
+<p>Nos dan una direccion ip <code class="language-plaintext highlighter-rouge">http://34.214.201.218/</code> al cual es una pagina web.</p>
+
+<p><img src="/assets/img/pwnedcr6/32.png" width="600" /></p>
+
+<p>Vamos a ver el codigo fuente y encontramos esto…</p>
+
+<p><img src="/assets/img/pwnedcr6/33.png" width="600" /></p>
+
+<blockquote>
+  <p>UFdORHtUaDNNMG5leV9Hb2Rlc3MhfQ==</p>
+</blockquote>
+
+<p>Esa cadena en base64 es una flag.</p>
+
+<blockquote>
+  <p>PWND{Th3M0ney_Godess!}</p>
+</blockquote>
+
+<h3 id="2-ellingson-mineral-chapter-2">2. Ellingson Mineral Chapter 2</h3>
+
+<blockquote>
+  <p>Descripción: Facil rigth? Todo es parte de conocer el entry point!!!</p>
+</blockquote>
+
+<p>Vamos a realizar un escaneo con <code class="language-plaintext highlighter-rouge">nmap</code> para ver si hay mas puertos abiertos a parte del 80 (HTTP).</p>
+
+<p>Podemos encontrar los puertos 21 (FTP) y 22 (SSH).</p>
+
+<p>En el <code class="language-plaintext highlighter-rouge">Chapter 1</code> se hace referencia al <code class="language-plaintext highlighter-rouge">FTP</code> y al usuario <code class="language-plaintext highlighter-rouge">margo</code> ademas la pagina tiene contraseñas, tal vez alguna de esas contraseñas es la del usuario margo para el servicio FTP…</p>
+
+<p><img src="/assets/img/pwnedcr6/35.png" width="600" /></p>
+
+<p>Probando las contraseñas podemos acceder al FTP con las credenciales <code class="language-plaintext highlighter-rouge">margo:god</code>.</p>
+
+<p>Podemos listar y descargar los archivos que hay en el FTP adentro de la carpeta <code class="language-plaintext highlighter-rouge">garbage</code>.</p>
+
+<p><img src="/assets/img/pwnedcr6/34.png" width="600" /></p>
+
+<p>En el archivo <code class="language-plaintext highlighter-rouge">stillnohandle.txt</code> podemos encontrar una cadena en base64 <code class="language-plaintext highlighter-rouge">UFdORHtKMDN5V0BzSGVyZSF9</code> que es otra flag.</p>
+
+<blockquote>
+  <p>PWND{J03yW@sHere!}</p>
+</blockquote>
+
+<h3 id="3-ellingson-mineral-chapter-3">3. Ellingson Mineral Chapter 3</h3>
+
+<blockquote>
+  <p>Descripción: same URL….. but……</p>
+</blockquote>
+
+<p>En el FTP tambien encontramos <a href="/assets/img/pwnedcr6/davinci.bin">este archivo</a> llamado <code class="language-plaintext highlighter-rouge">davinci.bin</code>, vamos a cargarlo en CyberChef…</p>
+
+<p>Al parecer es un archivo en C, pero sin compilar, ademas podemos ver credenciales.</p>
+
+<p><img src="/assets/img/pwnedcr6/36.png" width="800" /></p>
+
+<p>Con esas credenciales podemos entrar al SSH.</p>
+
+<p><img src="/assets/img/pwnedcr6/37.png" width="700" /></p>
+
+<p>Decodeamos la cadena de base64 y tenemos la flag.</p>
+
+<blockquote>
+  <p>PWND{Wait!Cr@shand8urn!}</p>
+</blockquote>
+
+<hr />
+
+<p>Espero que les haya gustado este write-up :), nos vemos el proximo año en esta increible conferencia.</p>
+
+</article>
+      </div>
+    </main>
+  </body>
+</html>
